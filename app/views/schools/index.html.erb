@@ -1,0 +1,18 @@
+<div class="table-responsive"> 
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>School</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% School.all.each do |s| %>
+      <tr>
+        <td><%= link_to s.name, "/schools/#{s.id}/assignments" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

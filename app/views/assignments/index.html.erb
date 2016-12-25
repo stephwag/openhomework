@@ -1,0 +1,39 @@
+<div class="table-responsive"> 
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Assignment</th>
+        <th>Description</th>
+        <th>Includes Answers</th>
+        <th>Course</th>
+        <th>Year</th>
+        <th>Semester</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @course.assignments.each do |c| %>
+      <tr>
+        <td><%= link_to c.name, "/assignments/#{c.id}" %></td>
+        <td><%= c.description %></td>
+        <td><%= c.display_includes_answers? %></td>
+        <td><%= c.course_name %></td>
+        <td><%= c.course_year %></td>
+        <td><%= c.course_semester %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h3>Upload Assignment For This Course</h3>
+<%= simple_form_for @course.assignments.new, url: "/courses/#{@course.id}/assignments", method: :post do |f| %>
+  <%= f.input :name, label: "Assignment Name" %>
+  <%= f.input :includes_answers, as: :select, collection: [['No', false],['Yes',true]] %>
+  <%= f.input :course_name %>
+  <%= f.input :course_year %>
+  <%= f.input :course_semester %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :filename, as: :file, label: "Upload File" %>
+  <%= f.submit "Upload assignment to this course", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,17 @@
+<div class="table-responsive"> 
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Course</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @school.courses.each do |c| %>
+      <tr>
+        <td><%= link_to c.name, "/courses/#{c.id}/assignments" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
