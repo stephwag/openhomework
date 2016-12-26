@@ -1,0 +1,4 @@
+<h3>Enjoy Your Download</h3>
+<%= link_to "Download #{@assignment.name}", @assignment.download_url, target: '_blank', class: "btn btn-primary" %>
+<br><br>
+<%= link_to "Back to Assignments", "/schools/#{@assignment.school.id}/assignments" %>

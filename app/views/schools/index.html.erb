@@ -1,3 +1,10 @@
+<h3>Search Schools</h3>
+<%= simple_form_for :search, url: "/schools/search", method: :get do |f| %>
+  <%= f.input :query, label: "School Name" %>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>
+
+<h3>Search Results</h3>
 <div class="table-responsive"> 
   <table class="table table-bordered">
     <thead>
@@ -8,7 +15,7 @@
     </thead>
     <tbody>
 
-      <% School.all.each do |s| %>
+      <% @schools.each do |s| %>
       <tr>
         <td><%= link_to s.name, "/schools/#{s.id}/assignments" %></td>
       </tr>

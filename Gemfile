@@ -29,6 +29,8 @@ gem 'aws-sdk'
 
 gem 'simple_form'
 
+gem 'stripe'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

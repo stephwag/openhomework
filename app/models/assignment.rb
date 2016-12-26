@@ -1,9 +1,21 @@
 class Assignment < ActiveRecord::Base
+  belongs_to :school
+  validates :name, presence: true
+  validates :course_name, presence: true
+  validates :course_year, presence: true
+  validates :course_semester, presence: true
+  validates :filename, presence: true
+
   def download_url
-    "https://" + ENV['AWS_CLOUDFRONT_HOST'] + "/assignments/#{filename}"
+    filetype = Rack::Mime::MIME_TYPES.invert[content_type]
+    "https://" + ENV['AWS_CLOUDFRONT_HOST'] + "/assignments/#{filename}#{filetype}"
   end
 
   def display_includes_answers?
-    includes_answers == 0 ? 'Yes' : 'No'
+    if includes_answers?
+      'Yes'
+    else
+      'No'
+    end
   end
 end

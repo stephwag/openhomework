@@ -1,0 +1,11 @@
+<% if alert.present? %>
+  <div class="alert alert-danger">
+    <strong>Error</strong><div id="alert-danger-message"><%= alert %></div>
+  </div>
+<% end %>
+
+<% if notice.present? %>
+  <div class="alert alert-success">
+    <strong>Success</strong><div id="alert-success-message"><%= notice %></div>
+  </div>
+<% end %>

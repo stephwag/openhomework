@@ -1,3 +1,4 @@
+<h3>Available Assignments</h3>
 <div class="table-responsive"> 
   <table class="table table-bordered">
     <thead>
@@ -12,7 +13,7 @@
     </thead>
     <tbody>
 
-      <% @course.assignments.each do |c| %>
+      <% @school.assignments.each do |c| %>
       <tr>
         <td><%= link_to c.name, "/assignments/#{c.id}" %></td>
         <td><%= c.description %></td>
@@ -27,9 +28,9 @@
 </div>
 
 <h3>Upload Assignment For This Course</h3>
-<%= simple_form_for @course.assignments.new, url: "/courses/#{@course.id}/assignments", method: :post do |f| %>
+<%= simple_form_for Assignment.new, url: "/schools/#{@school.id}/assignments", method: :post do |f| %>
   <%= f.input :name, label: "Assignment Name" %>
-  <%= f.input :includes_answers, as: :select, collection: [['No', false],['Yes',true]] %>
+  <%= f.input :includes_answers, as: :boolean %>
   <%= f.input :course_name %>
   <%= f.input :course_year %>
   <%= f.input :course_semester %>

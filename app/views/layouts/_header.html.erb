@@ -5,9 +5,11 @@
         <!-- breadcrumb -->
         <ol class="breadcrumb">
 
-          <li>Schools</li>
-          <li>Courses</li>
-          <li>Assignments</li>
+          <li><a href="/">Schools</a></li>
+
+          <% if is_active_controller('assignments') %>
+            <li>Assignments</li>
+          <% end %>
 
         </ol>
         <!-- end breadcrumb -->
