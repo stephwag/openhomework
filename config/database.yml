@@ -11,3 +11,6 @@ development:
   pool: 5
   username: <%= ENV['OPENHOMEWORK_DB_USERNAME'] %>
   password: <%= ENV['OPENHOMEWORK_DB_PASSWORD'] %>
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
