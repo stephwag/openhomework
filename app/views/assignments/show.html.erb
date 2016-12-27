@@ -1,12 +1,5 @@
 <h3>Download Assignment</h3>
-<%= simple_form_for @assignment, url: "/assignments/#{@assignment.id}/download", method: :post do |f| %>
-    <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>"
-    data-name="Openhomework"
-    data-description="Download <%= @assignment.name %>"
-    data-label="Download for $2"
-    data-panel-label="Pay $2 and Download"
-    data-locale="auto">
-  </script>
-<% end %>
+
+<%= link_to "Download #{@assignment.name}", @assignment.download_url, target: '_blank', class: "btn btn-primary" %>
+<br><br>
+<%= link_to "Back to Assignments", "/schools/#{@assignment.school.id}/assignments" %>
