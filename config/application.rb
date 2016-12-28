@@ -8,10 +8,10 @@ Bundler.require(*Rails.groups)
 
 module Openhomework
   class Application < Rails::Application
-    config.assets.paths << Rails.root.join('public')
     config.assets.paths << Rails.root.join('public', 'assets', 'css')
     config.assets.paths << Rails.root.join('public', 'assets', 'cubeportfolio')
     config.assets.paths << Rails.root.join('public', 'assets', 'bootstrap')
+    config.assets.paths << Rails.root.join('public', 'assets', 'elegant-icons')
     config.assets.paths << Rails.root.join('public', 'assets', 'font-awesome')
     config.assets.paths << Rails.root.join('public', 'assets', 'img')
     config.assets.paths << Rails.root.join('public', 'assets', 'ionicons')
