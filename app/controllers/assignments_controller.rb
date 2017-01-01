@@ -8,39 +8,20 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
   end
 
-  def download
-    @assignment = Assignment.find(params[:id])
-
-    @charge = Stripe::Charge.create(
-      card: params[:stripeToken],
-      amount: 200,
-      currency: 'usd',
-      description: "Assignment download from Openhomework")
-
-    @download = Download.create(
-      stripe_token: params[:stripeToken], 
-      stripe_email: params[:stripeEmail], 
-      assignment_id: @assignment.id)
-  end
-
   def create
     @school = School.find(params[:school_id])
-    key = SecureRandom.uuid
+    content_type = assignment_params[:filename].content_type
+    filetype = Rack::Mime::MIME_TYPES.invert[content_type]
+    key = SecureRandom.uuid + filetype
 
     @assignment = @school.assignments.build(assignment_params)
+    @assignment.filename = key
+    @assignment.content_type = content_type
+    @assignment.original_filename = assignment_params[:filename].original_filename
 
     respond_to do |format|
-      if @assignment.valid?
-
-        s3 = Aws::S3::Resource.new(region:'us-west-2')
-        obj = s3.bucket(ENV['AWS_S3_BUCKET']).object("assignments/#{key}")
-        obj.upload_file(assignment_params[:filename].path)
-
-        @assignment.filename = key
-        @assignment.content_type = assignment_params[:filename].content_type
-        @assignment.original_filename = assignment_params[:filename].original_filename
-        @assignment.save
-
+      if @assignment.save
+        upload_assignment(path: assignment_params[:filename].path, key: key)
         format.html { redirect_to "/schools/#{@school.id}/assignments", notice: "Assignment Uploaded" }
       else
         format.html { redirect_to "/schools/#{@school.id}/assignments", alert: @assignment.errors.full_messages.join(", ") }

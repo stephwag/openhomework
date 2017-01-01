@@ -7,8 +7,7 @@ class Assignment < ActiveRecord::Base
   validates :filename, presence: true
 
   def download_url
-    filetype = Rack::Mime::MIME_TYPES.invert[content_type]
-    "https://" + ENV['AWS_CLOUDFRONT_HOST'] + "/assignments/#{filename}#{filetype}"
+    "https://" + ENV['AWS_CDN_HOST'] + "/assignments/#{filename}"
   end
 
   def display_includes_answers?

@@ -1,12 +1,7 @@
 class SchoolsController < ApplicationController
   def index
     @schools = []
-
-    set_meta_tags site: 'Openhomework', 
-        title: 'Find a School', 
-        description: "Share course materials and old assignments in any school.",
-        keywords: %w[homework school college tuition education course courses study studying tech technology],
-        icon: '/favicon.ico'
+    apply_meta_tags(title: 'Find a School')
   end
 
   def search
