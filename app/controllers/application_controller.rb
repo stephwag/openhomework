@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   def upload_assignment(path:,key:)
     s3 = Aws::S3::Resource.new(region:'us-west-2')
     obj = s3.bucket(ENV['AWS_S3_BUCKET']).object("assignments/#{key}")
-    obj.upload_file(assignment_params[:filename].path)
+    obj.upload_file(path)
   end
 end
