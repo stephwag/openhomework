@@ -4,7 +4,9 @@
 
 ## Requirements
 * Ruby 2.3.3
-* AWS S3, where assignments are stored. All static assets were provided via cdn and aren't included in this repo, but the only required asset you'll need is bootstrap, which you can get yourself.
+* AWS S3, where assignments are stored.
+
+All static assets were provided via cdn and aren't included in this repo, but the only required asset you'll need is bootstrap, which you can get yourself.
 
 ## Setup
 * Run `bundle install`
