@@ -1,6 +1,6 @@
 # Openhomework
 A site where you can upload and download homework assignments and exams from any college.
-Colleges 
+College data comes from the IPEDS database.
 
 ## Requirements
 * Ruby 2.3.3
