@@ -33,16 +33,6 @@ ActiveRecord::Schema.define(version: 20161226010900) do
 
   add_index "assignments", ["school_id"], name: "index_assignments_on_school_id", using: :btree
 
-  create_table "courses", force: :cascade do |t|
-    t.integer  "school_id"
-    t.string   "name"
-    t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "courses", ["school_id"], name: "index_courses_on_school_id", using: :btree
-
   create_table "downloads", force: :cascade do |t|
     t.integer  "assignment_id"
     t.string   "stripe_email"
