@@ -8,7 +8,7 @@ College data comes from the IPEDS database.
 
 ## Setup
 * Run `bundle install`
-* Create an `application.yml` file with your environment variables, based on the keys shown in `config/application.yml.sample`.
+* Create a `config/application.yml` file with your environment variables, based on the keys shown in `config/application.yml.sample`.
 * `rake db:create`
 * `rake db:schema:load`
 * `rake db:seed` to seed your database with college data.
