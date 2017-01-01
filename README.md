@@ -1,6 +1,7 @@
 # Openhomework
 * A site where you can upload and download homework assignments and exams from any college.
 * College data comes from the IPEDS database.
+* **Please check the GitLab version for the most up-to-date repo**: https://www.gitlab.com/stephwag/openhomework
 
 ## Requirements
 * Ruby 2.3.3
